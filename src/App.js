@@ -1,5 +1,5 @@
 import './App.css'
-import { ButtonGroup, Container, Button, Col, Row } from 'react-bootstrap'
+import { ButtonGroup, Container, Col, Row, ToggleButton } from 'react-bootstrap'
 import Weather from './components/Weather'
 import weatherService from './services/weatherService'
 import { useState, useEffect } from 'react'
@@ -58,15 +58,15 @@ const App = () => {
 
     console.log(updatedLocation)
     setCurrentLocation(updatedLocation)
-    getCurrentWeatherData(updatedLocation.coordinates)
+    setCurrentWeatherData(updatedLocation.coordinates)
   }
 
-  const getCurrentWeatherData = async (location) => {
+  const setCurrentWeatherData = async (location) => {
     try {
       const updatedWeatherData = await weatherService.getCurrentWeather(
         location
       )
-      console.log(updatedWeatherData)
+
       setWeatherData(updatedWeatherData)
     } catch (error) {
       setWeatherData(null)
@@ -80,14 +80,19 @@ const App = () => {
         <Col>
           <Container className='datacontainer buttons'>
             <ButtonGroup vertical>
-              {locations.map((location) => (
-                <Button
+              {locations.map((location, idx) => (
+                <ToggleButton
                   key={location.id}
+                  id={`radio-${idx}`}
+                  type='radio'
+                  variant='primary'
+                  name='radio'
                   value={location.id}
-                  onClick={handleLocationChange}
+                  checked={currentLocation.id === location.id}
+                  onChange={handleLocationChange}
                 >
                   {location.name}
-                </Button>
+                </ToggleButton>
               ))}
             </ButtonGroup>
           </Container>
