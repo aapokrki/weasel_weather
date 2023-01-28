@@ -1,8 +1,10 @@
 import './App.css'
 import { ButtonGroup, Container, Col, Row, ToggleButton } from 'react-bootstrap'
-import Weather from './components/Weather'
+import Weatherlist from './components/Weatherlist'
 import weatherService from './services/weatherService'
 import { useState, useEffect } from 'react'
+import { Form } from 'react-bootstrap'
+
 const locations = [
   {
     'name': 'Tampere',
@@ -43,6 +45,7 @@ const App = () => {
   const [currentLocation, setCurrentLocation] = useState(locations[0])
   const [weatherData, setWeatherData] = useState(null)
   const [statusMessage, setStatusMessage] = useState('Loading...')
+  const [showMore, setShowMore] = useState(false)
 
   useEffect(() => {
     weatherService
@@ -99,11 +102,19 @@ const App = () => {
         </Col>
         <Col>
           <Container className='datacontainer weather'>
+            <div>
+              Current weather / 3 days
+              <Form.Switch
+                id='showPrediction'
+                onChange={() => setShowMore(!showMore)}
+              />
+            </div>
             {weatherData != null ? (
-              <Weather
+              <Weatherlist
                 key={currentLocation.id}
                 weatherData={weatherData}
-              ></Weather>
+                showMore={showMore}
+              ></Weatherlist>
             ) : (
               <div>{statusMessage}</div>
             )}

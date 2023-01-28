@@ -1,0 +1,11 @@
+.label {
+  text-align: left;
+}
+.data {
+  text-align: right;
+}
+.icon {
+  width: 60px;
+  height: 60px;
+  margin: 5px auto;
+}
