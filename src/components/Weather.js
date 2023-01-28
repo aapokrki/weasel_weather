@@ -2,7 +2,16 @@ import PropTypes from 'prop-types'
 import './Weather.css'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloud } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCloudRain,
+  faCloudShowersHeavy,
+  faSnowflake,
+  faTemperatureEmpty,
+  faTemperatureHalf,
+  faTemperatureHigh,
+  faTemperatureQuarter,
+  faTemperatureThreeQuarters,
+} from '@fortawesome/free-solid-svg-icons'
 const Weather = ({ dateString, temperature, precipitation }) => {
   const date = new Date(dateString)
 
@@ -23,11 +32,55 @@ const Weather = ({ dateString, temperature, precipitation }) => {
   }
 
   const printIcon = () => {
-    if (temperature > 0) {
-      return <FontAwesomeIcon className='icon' icon={faCloud} />
+    if (precipitation > 5) {
+      return (
+        <FontAwesomeIcon icon={faCloudShowersHeavy} className='weather-icon' />
+      )
+    }
+    if (precipitation >= 0.5) {
+      if (temperature > 0) {
+        return <FontAwesomeIcon icon={faCloudRain} className='weather-icon' />
+      }
+      if (temperature < 0) {
+        return <FontAwesomeIcon icon={faSnowflake} className='weather-icon' />
+      }
     }
 
-    return <FontAwesomeIcon className='icon' icon={faCloud} />
+    if (precipitation < 0.5) {
+      if (temperature > 20) {
+        return (
+          <FontAwesomeIcon icon={faTemperatureHigh} className='weather-icon' />
+        )
+      }
+      if (temperature > 10) {
+        return (
+          <FontAwesomeIcon
+            icon={faTemperatureThreeQuarters}
+            className='weather-icon'
+          />
+        )
+      }
+      if (temperature > 1) {
+        return (
+          <FontAwesomeIcon icon={faTemperatureHalf} className='weather-icon' />
+        )
+      }
+      if (temperature > -5) {
+        return (
+          <FontAwesomeIcon
+            icon={faTemperatureQuarter}
+            className='weather-icon'
+          />
+        )
+      }
+      if (temperature > -20) {
+        return (
+          <FontAwesomeIcon icon={faTemperatureEmpty} className='weather-icon' />
+        )
+      }
+
+      return <FontAwesomeIcon icon={faSnowflake} className='weather-icon' />
+    }
   }
 
   return (
