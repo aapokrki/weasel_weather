@@ -31,6 +31,7 @@ const Weatherlist = ({ weatherData, showMore }) => {
         dateString={weatherData.daily.time[0]}
         temperature={weatherData.current_weather.temperature}
         precipitation={weatherData.daily.precipitation_sum[0]}
+        weatherCode={weatherData.current_weather.weathercode}
       />
       {showMore ? (
         days.map((day) => (
@@ -39,6 +40,7 @@ const Weatherlist = ({ weatherData, showMore }) => {
             dateString={weatherData.daily.time[day]}
             temperature={getFutureWeather(day)}
             precipitation={weatherData.daily.precipitation_sum[day]}
+            weatherCode={weatherData.daily.weathercode[day]}
           />
         ))
       ) : (

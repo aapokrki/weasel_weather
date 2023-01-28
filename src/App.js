@@ -4,42 +4,7 @@ import Weatherlist from './components/Weatherlist'
 import weatherService from './services/weatherService'
 import { useState, useEffect } from 'react'
 import { Form } from 'react-bootstrap'
-
-const locations = [
-  {
-    'name': 'Tampere',
-    'id': '634964',
-    'coordinates': {
-      'x': 61.5,
-      'y': 23.79,
-    },
-  },
-  {
-    'name': 'Helsinki',
-    'id': '658225',
-    'coordinates': {
-      'x': 60.17,
-      'y': 24.95,
-      //'y': null,
-    },
-  },
-  {
-    'name': 'Turku',
-    'id': '633679',
-    'coordinates': {
-      'x': 60.17,
-      'y': 22.28,
-    },
-  },
-  {
-    'name': 'Lahti',
-    'id': '643760',
-    'coordinates': {
-      'x': 60.98,
-      'y': 25.66,
-    },
-  },
-]
+import { locations } from './utils'
 
 const App = () => {
   const [currentLocation, setCurrentLocation] = useState(locations[0])
@@ -109,6 +74,7 @@ const App = () => {
                 onChange={() => setShowMore(!showMore)}
               />
             </div>
+            <h1>{currentLocation.name}</h1>
             {weatherData != null ? (
               <Weatherlist
                 key={currentLocation.id}
