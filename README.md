@@ -13,7 +13,7 @@ Additionally you can click the downward arrow to show a more precise weather pre
 This project was a fun and simple learning experience :)
 
 
-**Technologies used:** React, React-bootstrap, Axios
+**Technologies used:** React, React-bootstrap, Axios, ESLint
 
 ## Available Scripts
 
