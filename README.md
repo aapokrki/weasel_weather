@@ -11,6 +11,8 @@ Additionally you can click the downward arrow to show a more precise weather pre
 ## Thoughts
 
 This project was a fun and simple learning experience :)
+
+
 **Technologies used:** React, React-bootstrap, Axios
 
 ## Available Scripts
