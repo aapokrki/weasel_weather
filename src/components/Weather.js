@@ -23,8 +23,8 @@ const Weather = ({
     return `${day}.${month}`
   }
 
+  // Print weather timeline of the day with 4 hour intervals
   const printTimeline = () => {
-    console.log(tempTimeline)
     return tempTimeline.map((temp, hour) => {
       if (hour % 4 === 0) {
         return (

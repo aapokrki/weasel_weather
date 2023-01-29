@@ -12,6 +12,7 @@ const App = () => {
   const [statusMessage, setStatusMessage] = useState('Loading...')
   const [showMore, setShowMore] = useState(false)
 
+  // Fetch weather data for the start location
   useEffect(() => {
     weatherService
       .getCurrentWeather(currentLocation.coordinates)
@@ -19,6 +20,7 @@ const App = () => {
       .catch(() => setStatusMessage('Could not load weather data'))
   }, [])
 
+  // Change location and fetch new weather data
   const handleLocationChange = (event) => {
     const updatedLocation = locations.find(
       (location) => location.id === event.target.value
@@ -27,6 +29,7 @@ const App = () => {
     setCurrentWeatherData(updatedLocation.coordinates)
   }
 
+  // Set weather data for the selected location
   const setCurrentWeatherData = async (location) => {
     try {
       const updatedWeatherData = await weatherService.getCurrentWeather(

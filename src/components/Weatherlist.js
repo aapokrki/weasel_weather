@@ -25,7 +25,6 @@ const Weatherlist = ({ weatherData, showMore }) => {
   }
 
   const getHourlyTemperature = (dayFromNow) => {
-    //console.log(weatherData)
     const indexGap = getIndexGap(dayFromNow)
     const hourlyWeather = weatherData.hourly.temperature_2m.slice(
       indexGap[0],
@@ -34,7 +33,6 @@ const Weatherlist = ({ weatherData, showMore }) => {
     return hourlyWeather
   }
   const getHourlyPrecipitation = (dayFromNow) => {
-    //console.log(weatherData)
     const indexGap = getIndexGap(dayFromNow)
     const hourlyPrec = weatherData.hourly.precipitation.slice(
       indexGap[0],
