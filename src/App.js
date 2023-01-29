@@ -23,8 +23,6 @@ const App = () => {
     const updatedLocation = locations.find(
       (location) => location.id === event.target.value
     )
-
-    console.log(updatedLocation)
     setCurrentLocation(updatedLocation)
     setCurrentWeatherData(updatedLocation.coordinates)
   }

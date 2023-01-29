@@ -11,4 +11,9 @@
   border-radius: 5px;
   position: relative;
   min-height: 100px;
+  width: fit-content;
+}
+
+.weathercode {
+  margin: 10px;
 }
