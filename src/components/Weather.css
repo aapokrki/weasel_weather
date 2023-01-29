@@ -17,3 +17,10 @@
 .weathercode {
   margin: 10px;
 }
+
+.expandtimeline {
+  text-align: center;
+  border: 0px;
+  background-color: white;
+  color: grey;
+}

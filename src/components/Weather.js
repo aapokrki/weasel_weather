@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 import './Weather.css'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Collapse } from 'react-bootstrap'
 import {} from '@fortawesome/react-fontawesome'
 import {} from '@fortawesome/free-solid-svg-icons'
 import { WEATHERCODES } from '../utils'
+import { useState } from 'react'
 
 const Weather = ({
   dateString,
@@ -13,6 +14,7 @@ const Weather = ({
   tempTimeline,
   precTimeline,
 }) => {
+  const [open, setOpen] = useState(false)
   const date = new Date(dateString)
 
   const printDate = () => {
@@ -77,7 +79,17 @@ const Weather = ({
           <b className='data'> {precipitation}mm</b>
         </Col>
       </Row>
-      <Row className='timeline'>{printTimeline()}</Row>
+      <button
+        className='expandtimeline'
+        onClick={() => setOpen(!open)}
+        aria-controls='example-collapse-text'
+        aria-expanded={open}
+      >
+        ⌄
+      </button>
+      <Collapse in={open}>
+        <Row className='timeline'>{printTimeline()}</Row>
+      </Collapse>
     </Container>
   )
 }
